@@ -1,0 +1,6 @@
+target 'SimpleApp' do
+	pod 'AFNetworking'
+	pod 'SDWebImage'
+	pod 'CocoaLumberjack'
+	pod 'IGListKit', '~> 4.0.0'
+end
