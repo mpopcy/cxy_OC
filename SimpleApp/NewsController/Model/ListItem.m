@@ -54,4 +54,22 @@
 //    self.articleUrl=[dictionary objectForKey:arr];
 }
 
+#pragma mark -
+
+- (nonnull id<NSObject>)diffIdentifier {
+    return _uniqueKey;
+}
+
+- (BOOL)isEqualToDiffableObject:(nullable id<IGListDiffable>)object {
+    if (self == object) {
+        return YES;
+    }
+
+    if (![((NSObject *)object) isKindOfClass:[ListItem class]]) {
+        return NO;
+    }
+    
+    return [_uniqueKey isEqualToString:((ListItem *)object).uniqueKey];
+}
+
 @end

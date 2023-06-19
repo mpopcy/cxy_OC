@@ -8,7 +8,8 @@
 #import "AppDelegate.h"
 #import "NewsViewController.h"
 #import "VideoViewController.h"
-#import "RecommendViewController.h"
+#import "SingleVideoViewController.h"
+//#import "RecommendViewController.h"
 #import "SplashView.h"
 #import "MineViewController.h"
 #import "Location.h"
@@ -41,11 +42,12 @@
     
     VideoViewController *videoController=[[VideoViewController alloc] init];
     
-    RecommendViewController *recommendController=[[RecommendViewController alloc] init];
+//    RecommendViewController *recommendController=[[RecommendViewController alloc] init];
+    SingleVideoViewController *singleVideoViewController=[[SingleVideoViewController alloc] init];
     
     MineViewController *mineController=[[MineViewController alloc] init];
     
-    [tabBarController setViewControllers:@[viewController,videoController,recommendController,mineController]];
+    [tabBarController setViewControllers:@[viewController,videoController,singleVideoViewController,mineController]];
     
     UINavigationController *navigationController=[[UINavigationController alloc] initWithRootViewController:tabBarController];
     
