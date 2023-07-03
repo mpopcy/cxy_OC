@@ -33,9 +33,9 @@
                                           size.height/2 - playPauseButtonHeight/2,
                                           playPauseButtonWidth,
                                           playPauseButtonHeight)];
-    [_playPauseButton setImage:[UIImage imageNamed:@"btn_center_play.png"] forState:UIControlStateNormal];
-    [_playPauseButton setContentMode:UIViewContentModeScaleAspectFit];
-    [_playPauseButton addTarget:self action:@selector(playOrPauseAction) forControlEvents:UIControlEventTouchUpInside];
+    [_playPauseButton setImage:[UIImage imageNamed:@"btn_center_play.png"] forState:UIControlStateNormal];//初始化时，展示“点击可播放”的三角按钮图标
+    [_playPauseButton setContentMode:UIViewContentModeScaleAspectFit];//UIView的缩放方式
+    [_playPauseButton addTarget:self action:@selector(playOrPauseAction) forControlEvents:UIControlEventTouchUpInside];//点击按钮时触发响应函数，从播放状态到暂停状态，or从暂停状态到播放状态
     [self addSubview:_playPauseButton];
     
     // user can tap screen

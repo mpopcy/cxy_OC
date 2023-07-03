@@ -11,7 +11,7 @@
 #import "DelCellView.h"
 #import "ListLoader.h"
 #import "ListItem.h"
-#import "Mediator.h"
+//#import "Mediator.h"
 #import "SearchBar.h"
 #import "Screen.h"
 #import "CommentManager.h"
@@ -83,7 +83,7 @@
 //    view.frame=CGRectMake(150, 150, 100, 100);
 //    [self.view addSubview:view];
 //
-//    //点击view响应到pushController方法
+    //点击view响应到pushController方法
 //    UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushController)];
 //    [view addGestureRecognizer:tapGesture];
 }
@@ -124,7 +124,7 @@
 //    [self.navigationController pushViewController:detailController animated:YES];
     
     //URL scheme组件化的调用
-    [Mediator openUrl:@"detail://" params:@{@"url":item.articleUrl,@"controller":self.navigationController}];
+//    [Mediator openUrl:@"detail://" params:@{@"url":item.articleUrl,@"controller":self.navigationController}];
     
     //使用key-value记录文章的已读状态，key是文章ID(正常开发应当有一个hasRead的属性，设置为key),value是对应文章array中文章ID对应的文章的已读or未读状态
     //在展示cell时判断文章的已读状态，展示不同的效果
@@ -173,16 +173,16 @@
 //    NSLog(@"NewsTableViewCellDelegate");
 }
 
-//-(void)pushController{
-//    //设置navigationBar的上边栏，标题、分享图标
-//    UIViewController *viewController=[[UIViewController alloc] init];
-//    viewController.view.backgroundColor=[UIColor whiteColor];
-//    viewController.navigationItem.title=@"title";
-//    viewController.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"share" style:UIBarButtonItemStylePlain target:self action:nil];
-//
-//    //调用自己的navigationController，push一个新的controller，达到切换页面的效果
-//    [self.navigationController pushViewController:viewController animated:YES];
-//}
+-(void)pushController{
+    //设置navigationBar的上边栏，标题、分享图标
+    UIViewController *viewController=[[UIViewController alloc] init];
+    viewController.view.backgroundColor=[UIColor whiteColor];
+    viewController.navigationItem.title=@"title";
+    viewController.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"share" style:UIBarButtonItemStylePlain target:self action:nil];
+
+    //调用自己的navigationController，push一个新的controller，达到切换页面的效果
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 -(void)_showCommentView{
     [[CommentManager sharedManager] showCommentView];

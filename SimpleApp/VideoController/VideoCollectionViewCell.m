@@ -1,17 +1,17 @@
 //
-//  VideoCoverView.m
+//  VideoCollectionViewCell.m
 //  SimpleApp
 //
-//  Created by 崔雪瑶 on 2023/2/20.
-//  展示一张占位图、播放按钮，点击cell播放视频
+//  Created by 崔雪瑶 on 2023/6/20.
+//
 
-#import "VideoCoverView.h"
+#import "VideoCollectionViewCell.h"
 #import <AVFoundation/AVFoundation.h>
 #import "VideoPlayer.h"
 #import "VideoToolBar.h"
+#import "SingleVideoViewController.h"
 
-//
-@interface VideoCoverView()<UIGestureRecognizerDelegate>
+@interface VideoCollectionViewCell()<UIGestureRecognizerDelegate>
 
 @property(nonatomic,strong,readwrite) UIImageView *coverView;
 @property(nonatomic,strong,readwrite) UIImageView *playButton;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation VideoCoverView
+@implementation VideoCollectionViewCell
 
 -(instancetype)initWithFrame:(CGRect)frame{
     self=[super initWithFrame:frame];
@@ -46,8 +46,8 @@
         })];
         
         //给整个cell添加一个手势以响应点击
-        UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_tapToPlay)];
-        [self addGestureRecognizer:tapGesture];
+//        UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_tapToPlay)];
+//        [self addGestureRecognizer:tapGesture];
         
         
         
@@ -73,10 +73,13 @@
 
 #pragma mark - private method
 
--(void)_tapToPlay{
-//    NSURL *videoURL=[NSURL URLWithString:_videoUrl];
-    //每次播放只需调用player单例，单例调用播放视频，同时传入承载播放器画面的view即可
-    [[VideoPlayer Player] playWithVideoUrl:_videoUrl attachView:_coverView];
-}
+//-(void)_tapToPlay{
+////    NSURL *videoURL=[NSURL URLWithString:_videoUrl];
+//    //每次播放只需调用player单例，单例调用播放视频，同时传入承载播放器画面的view即可
+//    [[VideoPlayer Player] playWithVideoUrl:_videoUrl attachView:_coverView];
+//
+//
+//}
 
 @end
+

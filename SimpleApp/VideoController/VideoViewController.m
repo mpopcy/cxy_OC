@@ -6,8 +6,9 @@
 //  视频滚动列表用UICollectionView实现
 
 #import "VideoViewController.h"
-#import "VideoCoverView.h"
+#import "VideoCollectionViewCell.h"
 #import "VideoToolBar.h"
+#import "SingleVideoViewController.h"
 
 @interface VideoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -47,7 +48,7 @@
     collectionView.dataSource=self;
     
     //collectionView初始化后①要注册cell类型，以用于重用
-    [collectionView registerClass:[VideoCoverView class] forCellWithReuseIdentifier:@"VideoCoverView"];
+    [collectionView registerClass:[VideoCollectionViewCell class] forCellWithReuseIdentifier:@"VideoCollectionViewCell"];
     
     //把新建的view粘贴到self的view中才能显示
     [self.view addSubview:collectionView];
@@ -60,19 +61,32 @@
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"VideoCoverView" forIndexPath:indexPath];
+    UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"VideoCollectionViewCell" forIndexPath:indexPath];
 //    cell.backgroundColor=[UIColor lightGrayColor];
     //可以在每个cell上粘贴subview，展示和处理相关逻辑
     
     //
-    if([cell isKindOfClass:[VideoCoverView class]]){
+    if([cell isKindOfClass:[VideoCollectionViewCell class]]){
         //http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
         //调用cell的layout方法展示cell
-        [((VideoCoverView *)cell) layoutWithVideoCoverUrl:@"icon.bundle/videoCover@3x.png" videoUrl:@"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"];
+        [((VideoCollectionViewCell *)cell) layoutWithVideoCoverUrl:@"icon.bundle/videoCover@3x.png" videoUrl:@"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"];
     }
     
     return cell;
 }
+
+//UICollectionViewDelegate中的方法
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    //设置navigationBar的上边栏，标题、分享图标
+    SingleVideoViewController *singleVideoViewController=[[SingleVideoViewController alloc] init];
+//    viewController.view.backgroundColor=[UIColor whiteColor];
+//    viewController.navigationItem.title=@"title";
+//    viewController.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"share" style:UIBarButtonItemStylePlain target:self action:nil];
+
+    //调用自己的navigationController，push一个新的controller，达到切换页面的效果
+    [self.navigationController pushViewController:singleVideoViewController animated:YES];
+}
+
 
 //系统默认的流式布局flowLayout提供delegate，可以自定义每一个cell的size
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{

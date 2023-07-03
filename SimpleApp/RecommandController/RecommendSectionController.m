@@ -7,7 +7,7 @@
 
 #import "RecommendSectionController.h"
 #import "Screen.h"
-#import "VideoCoverView.h"
+#import "VideoCollectionViewCell.h"
 #import "ListItem.h"
 
 
@@ -25,7 +25,7 @@
 
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index {
 
-    VideoCoverView *cell = [self.collectionContext dequeueReusableCellOfClass:[VideoCoverView class] forSectionController:self atIndex:index];
+    VideoCollectionViewCell *cell = [self.collectionContext dequeueReusableCellOfClass:[VideoCollectionViewCell class] forSectionController:self atIndex:index];
 //    [cell layoutWithVideoCoverUrl:_listItem.picUrl videoUrl:@""];
     [cell layoutWithVideoCoverUrl:@"videoCover" videoUrl:@""];
 

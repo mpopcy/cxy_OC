@@ -123,7 +123,7 @@ CGFloat const BottomBarHeight = 44;
 
 #pragma mark - Slider
 
-- (void)updateProgressWithCurrentTimeInSec:(float)currentTime durationInSec:(float)duration {
+- (void)updateProgressWithCurrentTimeInSec:(float)currentTime durationInSec:(float)duration {//更新进度条左侧展示current time，右侧展示duration即视频的总时长
     [super updateProgressWithCurrentTimeInSec:currentTime durationInSec:duration];
     // Set player max progress limit
     [_timeSlider setMaximumValue:duration];

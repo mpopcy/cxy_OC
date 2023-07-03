@@ -9,6 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//播放器状态
 typedef NS_ENUM(NSUInteger, VideoPlayerState) {
     VideoPlayerStateUnknown = 0,
     VideoPlayerStateLoading,
@@ -21,8 +22,8 @@ typedef NS_ENUM(NSUInteger, VideoPlayerState) {
 };
 
 @protocol VideoPlayerViewDelegate
-- (float)playbackRate;
-- (void)setPlaybackRate:(float)rate;
+- (float)playbackRate;//播放速率
+- (void)setPlaybackRate:(float)rate;//设置播放速率
 - (void)setCurrentTime:(float)currentTime;
 - (void)updatePlayerState:(VideoPlayerState)state;
 @end
